@@ -1,0 +1,19 @@
+<ion-header padding="3px">
+ <ion-grid>
+     <ion-row>
+        <ion-col class="ion-text-start">
+            {{buzz.name}}
+        </ion-col>
+        <ion-col class="ion-text-end">
+            <ion-button size="small" fill="outline" (click)="onCategoryClicked(buzz.category)">
+            {{buzz.category}}
+            </ion-button>
+        </ion-col>
+     </ion-row>
+ </ion-grid>
+</ion-header>
+<ion-content padding="10px">
+    <div style="padding: 5px">
+      {{buzz.description}}
+    </div>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header [myScrollVanish]="scrollArea">
+    <ion-searchbar type="search" placeholder="Discover" showCancelButton="true"
+                   [(ngModel)]="searchTerm"
+                   (ionChange)="setFilteredItems()"
+    ></ion-searchbar>
+    <div class="scroll-x">
+        <ion-button [fill]="category == selectedCategory ? 'solid':'outline'" *ngFor="let category of categoryList"
+                    (click)="onClickedCategory(category)">
+            <!--        <ion-icon name="{{category.icon}}"></ion-icon>-->
+            {{category.name}}
+        </ion-button>
+    </div>
+</ion-header>
+
+<ion-content #scrollArea scrollEvents="true">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let buzz of buzzWords">
+                    <div>
+                        <app-discover-button text="{{buzz.name}}"
+                                             (click)="showPopOver($event, buzz)"></app-discover-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+</ion-content>
+
